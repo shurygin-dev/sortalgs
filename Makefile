@@ -1,15 +1,31 @@
 CC=g++
+CFLAGS=-c -Wall -O0
 
-all: sortalgs
+all: sort_bubble sort_selection
 
-sortalgs: ArrayToSort.o bubble_sort.o
-	$(CC) ArrayToSort.o bubble_sort.o -o sortalgs
+sort_selection: ArrayToSort.o sortmethod_selection.o sort_selection.o
+	$(CC) ArrayToSort.o sortmethod_selection.o sort_selection.o -o sort_selection
+
+sort_bubble: ArrayToSort.o sortmethod_bubble.o sort_bubble.o
+	$(CC) ArrayToSort.o sortmethod_bubble.o sort_bubble.o -o sort_bubble
 
 ArrayToSort.o: ArrayToSort.cpp
-	$(CC) -c ArrayToSort.cpp
+	$(CC) $(CFLAGS) ArrayToSort.cpp
 
-bubble_sort.o: bubble_sort.cpp
-	$(CC) -c bubble_sort.cpp
+sortmethod_bubble.o: ArrayToSort.o sortmethod_bubble.cpp
+	$(CC) $(CFLAGS) sortmethod_bubble.cpp
+
+sortmethod_selection.o: ArrayToSort.o sortmethod_selection.cpp
+	$(CC) $(CFLAGS) sortmethod_selection.cpp
+
+sort_bubble.o: sort_bubble.cpp
+	$(CC) $(CFLAGS) sort_bubble.cpp
+
+sort_selection.o: sort_selection.cpp
+	$(CC) $(CFLAGS) sort_selection.cpp
 
 clean:
-	rm -rf sortalgs ArrayToSort.o bubble_sort.o
+	rm -rf sort_selection sort_bubble \
+		ArrayToSort.o \
+		sortmethod_bubble.o sort_bubble.o \
+		sortmethod_selection.o sort_selection.o

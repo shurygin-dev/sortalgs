@@ -12,7 +12,7 @@ ArrayToSort::ArrayToSort(int nums_count) {
 }
 
 ArrayToSort::~ArrayToSort() {
-    delete this->numbers;
+    delete[] this->numbers;
 }
 
 void ArrayToSort::print() {
