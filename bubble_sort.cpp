@@ -1,5 +1,6 @@
 #include <iostream>
 #include <ctime>
+#include <iomanip>
 
 using namespace std;
 
@@ -13,7 +14,7 @@ int main(int argc, char* argv[]) {
 
     for(int i = 0; i < nums_count; i++) {
         nums[i] = rand() % 200 - 100;
-        cout << nums[i] << " ";
+        cout << setw(3) << right << nums[i] << " ";
     }
 
     cout << endl;
@@ -33,7 +34,7 @@ int main(int argc, char* argv[]) {
     }
 
     for(int i = 0; i < nums_count; i++) {
-        cout << nums[i] << " ";
+        cout << setw(3) << right << nums[i] << " ";
     }
 
     cout << endl;
