@@ -1,6 +1,7 @@
 #include <iostream>
 #include <ctime>
 #include <iomanip>
+#include "ArrayToSort.h"
 
 using namespace std;
 
@@ -9,38 +10,31 @@ void bubblesort(int list[], int nums_count);
 int main(int argc, char* argv[]) {
     srand(time(NULL));
 
-    int nums_count = 30;
-    int* nums = new int[nums_count];
+    ArrayToSort* arr = new ArrayToSort(30);
 
-    for(int i = 0; i < nums_count; i++) {
-        nums[i] = rand() % 200 - 100;
-        cout << setw(3) << right << nums[i] << " ";
+    for(int i = 0; i < arr->nums_count; i++) {
+        arr->numbers[i] = rand() % 200 - 100;
     }
 
-    cout << endl;
+    arr->print();
 
-    for(int i = 0; i < nums_count; i++) {
+    for(int i = 0; i < arr->nums_count; i++) {
         int min;
         int min_found = 0;
-        for(int j = i; j < nums_count; j++) {
-            if(!min_found || min > nums[j]) {
+        for(int j = i; j < arr->nums_count; j++) {
+            if(!min_found || min > arr->numbers[j]) {
                 min_found = 1;
-                min = nums[j];
-                int t = nums[i];
-                nums[i] = min;
-                nums[j] = t;
+                min = arr->numbers[j];
+                int t = arr->numbers[i];
+                arr->numbers[i] = min;
+                arr->numbers[j] = t;
             }
         }
     }
 
-    for(int i = 0; i < nums_count; i++) {
-        cout << setw(3) << right << nums[i] << " ";
-    }
+    arr->print();
 
-    cout << endl;
-
-
-    delete nums;
+    delete arr;
 
     return 0;
 }
