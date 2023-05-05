@@ -1,6 +1,4 @@
 #include <iostream>
-#include <ctime>
-#include <iomanip>
 #include "ArrayToSort.h"
 
 using namespace std;
@@ -8,14 +6,9 @@ using namespace std;
 void bubblesort(int list[], int nums_count);
 
 int main(int argc, char* argv[]) {
-    srand(time(NULL));
 
     ArrayToSort* arr = new ArrayToSort(30);
-
-    for(int i = 0; i < arr->nums_count; i++) {
-        arr->numbers[i] = rand() % 200 - 100;
-    }
-
+    arr->generate();
     arr->print();
 
     for(int i = 0; i < arr->nums_count; i++) {

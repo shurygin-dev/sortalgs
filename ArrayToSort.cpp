@@ -22,3 +22,10 @@ void ArrayToSort::print() {
 
     cout << endl;
 }
+
+void ArrayToSort::generate() {
+    srand(time(NULL));
+    for(int i = 0; i < this->nums_count; i++) {
+        this->numbers[i] = rand() % 200 - 100;
+    }
+}

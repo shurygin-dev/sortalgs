@@ -11,7 +11,7 @@ class ArrayToSort {
     public:
         int* numbers;
         int nums_count;
-        //void generate();
+        void generate();
         void print();
         ArrayToSort();
         ~ArrayToSort();
